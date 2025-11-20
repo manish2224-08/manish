@@ -1,5 +1,5 @@
 {
-  "name": "manish-portfolio",
+  "name": "manish",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
@@ -14,4 +14,5 @@
     "@vitejs/plugin-react": "^4.0.0",
     "vite": "^4.4.0"
   }
+
 }
