@@ -17,7 +17,8 @@ export default function Navbar() {
           top: 0,
           background: "#0d1117",
           zIndex: 1000,
-          borderBottom: "1px solid #222"
+          borderBottom: "1px solid #222",
+          height: "70px" // important!
         }}
       >
         <h3 style={{ fontWeight: 700 }}>Manish Chandel</h3>
@@ -44,7 +45,6 @@ export default function Navbar() {
             transition: "0.3s"
           }}
         >
-          {/* Line 1 */}
           <span
             style={{
               width: "100%",
@@ -54,9 +54,7 @@ export default function Navbar() {
               transition: "0.3s",
               transform: open ? "rotate(45deg) translateY(10px)" : "none"
             }}
-          ></span>
-
-          {/* Line 2 */}
+          />
           <span
             style={{
               width: "100%",
@@ -66,9 +64,7 @@ export default function Navbar() {
               opacity: open ? 0 : 1,
               transition: "0.3s"
             }}
-          ></span>
-
-          {/* Line 3 */}
+          />
           <span
             style={{
               width: "100%",
@@ -78,11 +74,11 @@ export default function Navbar() {
               transition: "0.3s",
               transform: open ? "rotate(-45deg) translateY(-10px)" : "none"
             }}
-          ></span>
+          />
         </div>
       </nav>
 
-      {/* MOBILE DROPDOWN MENU */}
+      {/* FIXED MOBILE DROPDOWN BELOW HEADER */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -92,11 +88,14 @@ export default function Navbar() {
             transition={{ duration: 0.25 }}
             className="mobile-menu"
             style={{
+              position: "fixed",
+              top: "70px", // exactly navbar height
+              left: 0,
+              width: "100%",
               background: "#0d1117",
               borderBottom: "1px solid #222",
-              zIndex: 999,
-              overflow: "hidden",
-              position: "relative"
+              zIndex: 9999,
+              overflow: "hidden"
             }}
           >
             <div
