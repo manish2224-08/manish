@@ -6,74 +6,75 @@ export default function Navbar() {
 
   return (
     <>
+      {/* NAVBAR */}
       <nav
         style={{
-          padding: "20px",
+          padding: "18px 20px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           position: "sticky",
           top: 0,
           background: "#0d1117",
-          zIndex: 20,
+          zIndex: 1000,
           borderBottom: "1px solid #222"
         }}
       >
-        <h3 style={{ fontWeight: "700" }}>Manish Chandel</h3>
+        <h3 style={{ fontWeight: 700 }}>Manish Chandel</h3>
 
         {/* Desktop Menu */}
-        <div
-          className="desktop-menu"
-          style={{
-            display: "flex",
-            gap: "20px"
-          }}
-        >
+        <div className="desktop-menu" style={{ display: "flex", gap: "22px" }}>
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </div>
 
-        {/* Hamburger Icon (Mobile) */}
+        {/* Hamburger Button */}
         <div
           className="hamburger"
           onClick={() => setOpen(!open)}
           style={{
             width: "32px",
             height: "24px",
+            cursor: "pointer",
+            display: "none",
             flexDirection: "column",
             justifyContent: "space-between",
-            cursor: "pointer",
-            display: "none"
+            transition: "0.3s"
           }}
         >
+          {/* Line 1 */}
           <span
             style={{
-              height: "4px",
               width: "100%",
+              height: "4px",
               background: "#fff",
-              borderRadius: "6px",
+              borderRadius: "4px",
               transition: "0.3s",
               transform: open ? "rotate(45deg) translateY(10px)" : "none"
             }}
           ></span>
+
+          {/* Line 2 */}
           <span
             style={{
-              height: "4px",
               width: "100%",
+              height: "4px",
               background: "#fff",
-              borderRadius: "6px",
+              borderRadius: "4px",
               opacity: open ? 0 : 1,
               transition: "0.3s"
             }}
           ></span>
+
+          {/* Line 3 */}
           <span
             style={{
-              height: "4px",
               width: "100%",
+              height: "4px",
               background: "#fff",
-              borderRadius: "6px",
+              borderRadius: "4px",
               transition: "0.3s",
               transform: open ? "rotate(-45deg) translateY(-10px)" : "none"
             }}
@@ -81,27 +82,29 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu Drawer */}
+      {/* MOBILE DROPDOWN MENU */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="mobile-menu"
             style={{
               background: "#0d1117",
               borderBottom: "1px solid #222",
-              overflow: "hidden"
+              zIndex: 999,
+              overflow: "hidden",
+              position: "relative"
             }}
-            className="mobile-menu"
           >
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 padding: "20px",
-                gap: "15px",
+                gap: "18px",
                 textAlign: "center"
               }}
             >
@@ -114,12 +117,12 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Responsive CSS */}
+      {/* RESPONSIVE CSS */}
       <style>
         {`
           @media (max-width: 768px) {
             .desktop-menu {
-              display: none;
+              display: none !important;
             }
             .hamburger {
               display: flex !important;
