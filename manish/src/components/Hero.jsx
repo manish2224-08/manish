@@ -21,7 +21,7 @@ export default function Hero() {
         display: "inline-block",
         marginTop: "30px",
         padding: "12px 25px",
-        background: "#61dafb",
+        background: "#ffb226",
         color: "#000",
         borderRadius: "6px",
         fontWeight: 600
@@ -31,3 +31,4 @@ export default function Hero() {
     </section>
   );
 }
+
