@@ -33,7 +33,7 @@ export default function Contact() {
 
         {/* Download Resume Button */}
         <a
-          href="/Manish_Chandel_TwoColumn_Resume.pdf"
+          href="/themanishchandel-resume.pdf"
           download
           style={{
             padding: "12px 25px",
@@ -51,3 +51,4 @@ export default function Contact() {
     </section>
   );
 }
+
