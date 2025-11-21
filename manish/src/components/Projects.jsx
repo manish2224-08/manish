@@ -1,62 +1,85 @@
-import { projects } from "../data/projects";
 import { motion } from "framer-motion";
+import { projects } from "../data/projects";
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="py-24 px-6 lg:px-20 bg-[#0f172a] text-white"
-    >
-      {/* Section Title */}
+    <section id="projects" style={{ padding: "60px 0" }}>
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-4xl font-extrabold text-center mb-14"
+        style={{
+          textAlign: "center",
+          marginBottom: "40px",
+          fontSize: "2.2rem",
+          letterSpacing: "1px"
+        }}
       >
         Projects
       </motion.h2>
 
-      {/* Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "30px",
+          padding: "0 20px",
+        }}
+      >
         {projects.map((p, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
             viewport={{ once: true }}
-            whileHover={{ y: -6 }}
-            className="p-6 rounded-2xl bg-[#1e293b]/60 backdrop-blur border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-300"
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            whileHover={{
+              y: -8,
+              scale: 1.02,
+              transition: { duration: 0.25 }
+            }}
+            style={{
+              background: "rgba(255, 255, 255, 0.03)",
+              padding: "25px",
+              borderRadius: "14px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              boxShadow: "0 5px 12px rgba(0,0,0,0.25)",
+              backdropFilter: "blur(6px)",
+              WebkitBackdropFilter: "blur(6px)",
+              cursor: "pointer",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
           >
-            {/* Title */}
-            <h3 className="text-xl font-bold text-indigo-400 mb-3">
+            <h3 style={{ marginBottom: "10px", fontSize: "1.3rem" }}>
               {p.title}
             </h3>
 
-            {/* Description */}
-            <p className="text-slate-300 leading-relaxed mb-4">
+            <p style={{ opacity: 0.8, marginBottom: "15px" }}>
               {p.description}
             </p>
 
-            {/* Tech */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {p.tech.map((t, index) => (
-                <span
-                  key={index}
-                  className="text-xs px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
+            <p
+              style={{
+                opacity: 0.5,
+                fontSize: "0.9rem",
+                marginBottom: "15px",
+              }}
+            >
+              Tech: {p.tech.join(", ")}
+            </p>
 
-            {/* Button */}
             <a
               href={p.link}
               target="_blank"
-              className="inline-block mt-2 px-5 py-2 rounded-lg bg-indigo-500 hover:bg-indigo-600 transition shadow-md font-semibold"
+              rel="noopener noreferrer"
+              style={{
+                color: "#61dafb",
+                fontWeight: "600",
+                textDecoration: "none",
+                marginTop: "auto"
+              }}
             >
               View Project →
             </a>
