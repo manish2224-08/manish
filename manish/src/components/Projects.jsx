@@ -75,7 +75,7 @@ export default function Projects() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: "#61dafb",
+                color: "#ffb226",
                 fontWeight: "600",
                 textDecoration: "none",
                 marginTop: "auto"
@@ -89,3 +89,4 @@ export default function Projects() {
     </section>
   );
 }
+
