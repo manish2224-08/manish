@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { projects, filters } from "../data/projects"; // adjust path if needed
+import { useState } from "react";
+import { projects } from "../data/projects";
 
-const Projects = () => {
+export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
+
+  const filters = ["All", "WordPress", "Shopify", "Webflow", "Wix", "Joomla", "Squarespace", "Framer"];
 
   const filteredProjects =
     activeFilter === "All"
@@ -10,104 +12,86 @@ const Projects = () => {
       : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section className="projects-section">
+    <section id="projects" style={{ padding: "40px 0" }}>
+      <h2 style={{ textAlign: "center", marginBottom: "25px" }}>Projects</h2>
+
       {/* FILTER BUTTONS */}
-      <div className="filters">
-        {filters.map((filter) => (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          gap: "12px",
+          marginBottom: "30px",
+        }}
+      >
+        {filters.map((f) => (
           <button
-            key={filter}
-            onClick={() => setActiveFilter(filter)}
-            className={`filter-btn ${
-              activeFilter === filter ? "active" : ""
-            }`}
+            key={f}
+            onClick={() => setActiveFilter(f)}
+            style={{
+              padding: "10px 20px",
+              borderRadius: "25px",
+              border: activeFilter === f ? "2px solid #ffb226" : "2px solid #333",
+              background: "transparent",
+              color: activeFilter === f ? "#ffb226" : "#fff",
+              cursor: "pointer",
+              transition: "0.25s",
+            }}
+            onMouseEnter={(e) => (e.target.style.borderColor = "#ffb226")}
+            onMouseLeave={(e) =>
+              (e.target.style.borderColor =
+                activeFilter === f ? "#ffb226" : "#333")
+            }
           >
-            {filter}
+            {f}
           </button>
         ))}
       </div>
 
-      {/* PROJECT CARDS */}
-      <div className="projects-grid">
-        {filteredProjects.map((project, index) => (
-          <a
-            href={project.link}
-            key={index}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-card"
+      {/* PROJECT GRID */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "25px",
+        }}
+      >
+        {filteredProjects.map((p, i) => (
+          <div
+            key={i}
+            style={{
+              background: "#1a1f24",
+              padding: "20px",
+              borderRadius: "14px",
+              border: "1px solid #222",
+              transition: "0.3s",
+            }}
           >
-            <div className="project-card-content">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <span className="category">{project.category}</span>
-            </div>
-          </a>
+            <h3 style={{ marginBottom: "8px" }}>{p.title}</h3>
+
+            <p style={{ marginBottom: "10px", opacity: 0.9 }}>
+              {p.description}
+            </p>
+
+            <p style={{ opacity: 0.6, marginBottom: "12px" }}>
+              Tech: {p.tech.join(", ")}
+            </p>
+
+            <a
+              href={p.link}
+              target="_blank"
+              style={{
+                color: "#61dafb",
+                textDecoration: "none",
+                fontWeight: 600,
+              }}
+            >
+              View Project →
+            </a>
+          </div>
         ))}
       </div>
-
-      {/* OPTIONAL CSS */}
-      <style jsx>{`
-        .filters {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px;
-          margin-bottom: 30px;
-        }
-
-        .filter-btn {
-          padding: 8px 14px;
-          border-radius: 6px;
-          cursor: pointer;
-          background: #f2f2f2;
-          border: 1px solid #ddd;
-          transition: 0.3s;
-        }
-
-        .filter-btn.active {
-          background: #000;
-          color: #fff;
-          border-color: #000;
-        }
-
-        .projects-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-          gap: 20px;
-        }
-
-        .project-card {
-          display: block;
-          background: #fff;
-          padding: 18px;
-          border-radius: 10px;
-          border: 1px solid #e5e5e5;
-          transition: 0.3s;
-          text-decoration: none;
-          color: inherit;
-        }
-
-        .project-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .project-card-content h3 {
-          margin: 0 0 8px;
-          font-size: 1.2rem;
-        }
-
-        .category {
-          display: inline-block;
-          margin-top: 10px;
-          padding: 4px 8px;
-          font-size: 12px;
-          background: #f4f4f4;
-          border-radius: 5px;
-          color: #444;
-        }
-      `}</style>
     </section>
   );
-};
-
-export default Projects;
+}
