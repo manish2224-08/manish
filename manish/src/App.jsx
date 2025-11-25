@@ -20,10 +20,7 @@ export default function App() {
     </>
   );
 
-}
-
-export default function App({ children }) {
-  const [theme, setTheme] = useState(
+    const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "light"
   );
 
@@ -44,4 +41,10 @@ export default function App({ children }) {
       {children}
     </>
   );
+
 }
+
+
+
+
+
