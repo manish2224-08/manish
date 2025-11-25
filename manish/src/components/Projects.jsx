@@ -1,107 +1,113 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { projects } from "../data/projects";
+import React, { useState } from "react";
+import { projects, filters } from "../data/projects"; // adjust path if needed
 
-export default function Projects() {
-  // Extract unique categories from your project data
-  const categories = [
-    "All",
-    ...Array.from(new Set(projects.flatMap((p) => p.tech)))
-  ];
+const Projects = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
 
-  const [active, setActive] = useState("All");
-
-  const filtered =
-    active === "All"
+  const filteredProjects =
+    activeFilter === "All"
       ? projects
-      : projects.filter((p) => p.tech.includes(active));
+      : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section id="projects" style={{ padding: "60px 0" }}>
-      <h2 style={{ textAlign: "center", marginBottom: "25px" }}>Projects</h2>
-
-      {/* Filter Buttons */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "10px",
-          flexWrap: "wrap",
-          marginBottom: "40px"
-        }}
-      >
-        {categories.map((cat) => (
+    <section className="projects-section">
+      {/* FILTER BUTTONS */}
+      <div className="filters">
+        {filters.map((filter) => (
           <button
-            key={cat}
-            onClick={() => setActive(cat)}
-            style={{
-              padding: "10px 18px",
-              borderRadius: "8px",
-              cursor: "pointer",
-              border: "1px solid #333",
-              background: active === cat ? "#ffb226" : "#111",
-              color: active === cat ? "#000" : "#fff",
-              fontWeight: 600,
-              transition: "0.3s"
-            }}
+            key={filter}
+            onClick={() => setActiveFilter(filter)}
+            className={`filter-btn ${
+              activeFilter === filter ? "active" : ""
+            }`}
           >
-            {cat}
+            {filter}
           </button>
         ))}
       </div>
 
-      {/* Projects Grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "25px"
-        }}
-      >
-        <AnimatePresence>
-          {filtered.map((p, index) => (
-            <motion.div
-              key={index}
-              layout
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                background: "#1a1f24",
-                borderRadius: "12px",
-                border: "1px solid #222",
-                padding: "20px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                cursor: "pointer"
-              }}
-            >
-              <h3 style={{ marginBottom: "5px" }}>{p.title}</h3>
-
-              <p style={{ opacity: 0.8 }}>{p.description}</p>
-
-              <div style={{ opacity: 0.6, fontSize: "0.9rem" }}>
-                Tech: {p.tech.join(", ")}
-              </div>
-
-              <a
-                href={p.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  marginTop: "10px",
-                  fontWeight: 600,
-                  color: "#61dafb"
-                }}
-              >
-                View Project →
-              </a>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+      {/* PROJECT CARDS */}
+      <div className="projects-grid">
+        {filteredProjects.map((project, index) => (
+          <a
+            href={project.link}
+            key={index}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-card"
+          >
+            <div className="project-card-content">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <span className="category">{project.category}</span>
+            </div>
+          </a>
+        ))}
       </div>
+
+      {/* OPTIONAL CSS */}
+      <style jsx>{`
+        .filters {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-bottom: 30px;
+        }
+
+        .filter-btn {
+          padding: 8px 14px;
+          border-radius: 6px;
+          cursor: pointer;
+          background: #f2f2f2;
+          border: 1px solid #ddd;
+          transition: 0.3s;
+        }
+
+        .filter-btn.active {
+          background: #000;
+          color: #fff;
+          border-color: #000;
+        }
+
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 20px;
+        }
+
+        .project-card {
+          display: block;
+          background: #fff;
+          padding: 18px;
+          border-radius: 10px;
+          border: 1px solid #e5e5e5;
+          transition: 0.3s;
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .project-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-card-content h3 {
+          margin: 0 0 8px;
+          font-size: 1.2rem;
+        }
+
+        .category {
+          display: inline-block;
+          margin-top: 10px;
+          padding: 4px 8px;
+          font-size: 12px;
+          background: #f4f4f4;
+          border-radius: 5px;
+          color: #444;
+        }
+      `}</style>
     </section>
   );
-}
+};
+
+export default Projects;
