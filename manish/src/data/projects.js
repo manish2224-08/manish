@@ -1,98 +1,178 @@
+// src/data/projects.js
+// Filters list (only the filters you asked for)
+export const filters = [
+  "All",
+  "WordPress",
+  "Shopify",
+  "Webflow",
+  "Wix",
+  "Joomla",
+  "Squarespace",
+  "Framer"
+];
+
+// (Optional) local OG image path created during design iterations.
+// NOTE: This path is local to the environment where the image was generated.
+// To use this image on your live website, move the file into your project's public folder
+// (e.g. public/og-portfolio.png) and then update the path to "/og-portfolio.png".
+export const OG_IMAGE_LOCAL_PATH = "/mnt/data/A_digital_illustration_features_a_bold,_uppercase,.png";
+
 export const projects = [
+  // ---------------- WordPress ----------------
   {
     title: "Couture Law P.A.",
+    category: "WordPress",
     description:
-      "A personal injury law firm in Florida, specializing in car, truck, and motorcycle accidents, as well as wrongful death cases. Focused on fighting for full compensation for injured clients. " +
-      " " +  
-      "Couture Law P.A. is known for a client-centric approach and contingency-based payment.",  
-    tech: ["Law", "Personal Injury"],
+      "Personal injury law firm in Florida. Custom WordPress site focused on conversions and lead capture.",
+    tech: ["WordPress"],
     link: "https://couturelawoffices.com/"
   },
   {
     title: "Krupnick Campbell Malone",
+    category: "WordPress",
     description:
-      "Civil litigation and trial attorneys with over 45 years of experience. They represent clients in negligence, fraud, and international litigation. " +
-      " KCM is known for high-stakes civil cases and cross-border legal matters." ,  
-    tech: ["Law", "Civil Litigation"],
+      "Civil litigation & trial attorneys — WordPress site for professional legal services and resources.",
+    tech: ["WordPress"],
     link: "https://www.krupnicklaw.com/"
   },
   {
-    title: "GotchaMart",
-    description:
-      "An e-commerce store offering trending lifestyle and pet products. Marketed as a place for smart, viral finds delivered free." +
-      " (Note: some trust-score concerns have been raised.)",  
-    tech: ["E-commerce", "Shopify"],
-    link: "https://gotchamart.co/"
-  },
-  {
     title: "The Potager Project",
+    category: "WordPress",
     description:
-      "A gardening blog by Elle Reed that inspires people to grow their own vegetables, regardless of space or experience. Features guides on composting, container gardening, and sustainable food production." ,
-    tech: ["Blog", "Gardening"],
+      "Gardening blog and resource site with long-form guides and recipe / growing walkthroughs.",
+    tech: ["WordPress", "Blog"],
     link: "https://thepotagerproject.com/"
   },
   {
-    title: "Doctors Note Australia",
-    description:
-      "An online portal to order medical certificates from fully registered Australian GPs. Provides fast, secure, and legally valid doctor’s notes without leaving home." +
-      " Operated by Dr. Rupinder Singh with data privacy and 24/7 access.",  
-    tech: ["Healthcare", "Telemedicine"],
-    link: "https://doctorsnote.com.au/"
-  },
-  {
-    title: "Larson Shores Architects",
-    description:
-      "A bespoke architecture studio focused on creating refined, contemporary homes and spaces. Their process emphasizes careful planning, collaboration, and design integrity." ,
-    tech: ["Architecture", "Design"],
-    link: "https://www.larsonshores.com/"
-  },
-  {
-    title: "Boopos",
-    description:
-      "A financing platform offering business acquisition loans, especially for SaaS businesses. Provides fast, data-driven funding as an alternative to traditional bank debt." ,
-    tech: ["Fintech", "M&A"],
-    link: "https://www.boopos.com/"
-  },
-  {
-    title: "To The Moon & Back Foundation (TTMAB)",
-    description:
-      "A 501(c)(3) nonprofit dedicated to helping children born with in utero substance exposure and their families through education, advocacy, and peer support programs." ,
-    tech: ["Nonprofit", "Community"],
-    link: "https://ttmab.org/"
-  },
-  {
     title: "Corrocoat USA",
+    category: "WordPress",
     description:
-      "Specializes in high-performance coating and lining solutions for industrial assets—tanks, pipes, steel structures—to prevent corrosion and extend the lifecycle of infrastructure." ,
-    tech: ["Engineering", "Coatings"],
+      "Industrial coatings & linings company site built to showcase solutions and case studies.",
+    tech: ["WordPress"],
     link: "https://corrocoatusa.com/"
   },
   {
-    title: "Chocobar",
-    description:
-      "A Canadian craft chocolate brand curating award-winning cacao bars from around the world. Also provides corporate gifting options with beautifully designed chocolate boxes." ,
-    tech: ["Food & Beverage", "E-commerce"],
-    link: "https://chocobar.ca/"
-  },
-  {
     title: "Tallahassee 100 Club",
+    category: "WordPress",
     description:
-      "A historic business networking and community organization in Tallahassee. The 100 Club brings together professionals across industries to build relationships and support local initiatives." ,
-    tech: ["Community", "Networking"],
+      "Community and networking organization website for events, membership, and news.",
+    tech: ["WordPress"],
     link: "https://www.tallahassee100club.com/"
   },
   {
     title: "M&L Plumbing",
+    category: "WordPress",
     description:
-      "A trusted plumbing service provider in Florida with fast-response, expert plumbing solutions for both residential and commercial clients." ,
-    tech: ["Services", "Plumbing"],
+      "Local service business site with contact forms and service pages for plumbing solutions.",
+    tech: ["WordPress"],
     link: "https://mandlplumbing.com/"
   },
   {
     title: "Revell Electric & Automated Access Systems",
+    category: "WordPress",
     description:
-      "Family-owned Florida company that designs and installs automated gate systems, security entry systems, and electric fencing for residential and commercial properties." ,
-    tech: ["Electrical", "Security Systems"],
+      "Electrical and access automation company site with service listings and lead capture.",
+    tech: ["WordPress"],
     link: "https://www.revellelectric.com/"
+  },
+
+  // ---------------- Shopify ----------------
+  {
+    title: "Eurobahn Dynamics (Shopify)",
+    category: "Shopify",
+    description:
+      "Shopify store setup and theme customization to showcase product lines and checkout optimizations.",
+    tech: ["Shopify"],
+    link: "https://eurobahndynamics.com/"
+  },
+  {
+    title: "ChocoBar (Canada)",
+    category: "Shopify",
+    description:
+      "E-commerce site for craft chocolate and corporate gifting solutions (Shopify build).",
+    tech: ["Shopify", "E-commerce"],
+    link: "https://chocobar.ca/"
+  },
+
+  // ---------------- Webflow ----------------
+  {
+    title: "Larson Shores Architects",
+    category: "Webflow",
+    description:
+      "Architecture studio site built in Webflow highlighting projects and process.",
+    tech: ["Webflow"],
+    link: "https://www.larsonshores.com/"
+  },
+  {
+    title: "Boopos",
+    category: "Webflow",
+    description:
+      "Fintech / financing platform marketing site with product pages and data-driven funnels.",
+    tech: ["Webflow"],
+    link: "https://www.boopos.com/"
+  },
+  {
+    title: "LBC Design Center",
+    category: "Webflow",
+    description:
+      "Local design center website featuring products, gallery and appointment booking.",
+    tech: ["Webflow"],
+    link: "https://www.lbcdesigncenter.org/"
+  },
+  {
+    title: "Bambu Training",
+    category: "Webflow",
+    description:
+      "Training / e-learning marketing site built for conversion and course promotion.",
+    tech: ["Webflow"],
+    link: "https://www.bambutraining.com/"
+  },
+  {
+    title: "HunniBuzz",
+    category: "Webflow",
+    description:
+      "Marketing / product showcase site with modern interactions and CMS-driven content.",
+    tech: ["Webflow"],
+    link: "https://www.hunnibuzz.com/"
+  },
+
+  // ---------------- Wix ----------------
+  {
+    title: "Drink Good Bar",
+    category: "Wix",
+    description:
+      "Bar/restaurant promotional site using Wix with menus and contact/reservation features.",
+    tech: ["Wix"],
+    link: "https://www.drinkgoodbar.com/"
+  },
+
+  // ---------------- Joomla ----------------
+  {
+    title: "To The Moon & Back Foundation (TTMAB)",
+    category: "Joomla",
+    description:
+      "Nonprofit site focused on advocacy and family support — built on Joomla for content management.",
+    tech: ["Joomla", "Nonprofit"],
+    link: "https://ttmab.org/"
+  },
+
+  // ---------------- Squarespace ----------------
+  {
+    title: "Doctors Note (Australia)",
+    category: "Squarespace",
+    description:
+      "Online medical-certificate service with appointment and certificate delivery — Squarespace build.",
+    tech: ["Squarespace", "Healthcare"],
+    link: "https://doctorsnote.com.au/"
+  },
+
+  // ---------------- Framer ----------------
+  {
+    title: "Flow AI Ops",
+    category: "Framer",
+    description:
+      "Marketing site / product pages built in Framer — focused on product messaging and demos.",
+    tech: ["Framer"],
+    link: "https://flowaiops.com/"
   }
 ];
